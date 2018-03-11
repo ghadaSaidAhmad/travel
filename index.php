@@ -1,10 +1,4 @@
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-<script type="text/javascript" src="http://www.clubdesign.at/floatlabels.js"></script>
-
+<?php require 'layouts/header.php'?>
 <div class="container" style="padding: 100px">
     <div class="row centered-form">
         <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
@@ -17,7 +11,7 @@
                         <div class="row">
                             <div class="col-xs-6 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                    <input type="text" name="first_name" id="first_name" class="form-control input-sm floatlabel" placeholder="full Name">
+                                    <input type="text" name="name" id="name" class="form-control input-sm floatlabel" placeholder="full Name">
                                 </div>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6">
@@ -90,7 +84,7 @@
 
 
 
-                        <button onclick="addRecord()" type="submit"  class="btn btn-info btn-block"> RESRVE MY SPOT</button>
+                        <button onclick="addRecord()" type="button"  class="btn btn-info btn-block"> RESRVE MY SPOT</button>
 
                     </form>
                 </div>
@@ -98,3 +92,4 @@
         </div>
     </div>
 </div>
+<?php require 'layouts/footer.php'?>
