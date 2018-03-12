@@ -1,37 +1,42 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Ghada
- * Date: 3/11/2018
- * Time: 4:28 PM
- */
 
-include_once("rundml.php");
 class User
 {
-    var $id;
-    var $name;
-    var $email;
-    var $countery;
-    var $gender;
-    var $username;
-    var $password;
-    var $msg = "";
-
-    //add new user
-    function add($name,$email,$countery,$gender,$username,$password)
+  protected $db;
+      public function __construct($db)
     {
-        $query="insert into user(name,email,countery,gender,username,password)
-	            values ('$name','$email','$countery',
-	            '$gender','$username','$password')";
-        $result=dml($query);
-        if($result)
-        {
-            $msg=" added successfuley";
-        }else
-        {
-            $msg=" added failed";
-        }
-        return $msg;
-
+        $this->db = $db;
     }
+    
+   
+
+    /*
+     * Add new Record
+     * @param $first_name
+     * @param $last_name
+     * @param $email
+     * @return $mixed
+     * */
+    public function Create($name,$email,$phone,$country_id,$age_group_id,$travel_way_id,$country_number)
+    {
+        $query = $this->db->prepare("INSERT INTO user(name, email,phone,country_id,age_group_id,travel_way_id,country_number) VALUES 
+                                                     (:name,:email,:phone,:country_id,:age_group_id,:travel_way_id,:country_number)");
+        $query->bindParam("name", $name, PDO::PARAM_STR);
+        $query->bindParam("email", $email, PDO::PARAM_STR);
+        $query->bindParam("phone", $phone, PDO::PARAM_STR);
+        $query->bindParam("country_id", $country_id, PDO::PARAM_STR);
+        $query->bindParam("age_group_id", $age_group_id, PDO::PARAM_STR);
+        $query->bindParam("travel_way_id", $travel_way_id, PDO::PARAM_STR);
+        $query->bindParam("country_number", $country_number, PDO::PARAM_STR);
+       $query= $query->execute();
+       $result=$query?true:false;
+      
+       
+        return $result;
+    }
+
+
+ 
+}
+
+?>
