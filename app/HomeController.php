@@ -8,6 +8,7 @@ require '../classes/AgeGroup.php';
 
 class HomeController
 {
+    
      protected $db;
 
     function __construct()
@@ -15,11 +16,19 @@ class HomeController
        
         $this->db = DB();
     }
-    
-    public function Create($name,$email,$phone,$country_id,$age_group_id,$travel_way_id,$country_number)
+
+    public function checkEmail($email)
     {
        $user=new User($this->db);
-       $result=$user->Create($name,$email,$phone,$country_id,$age_group_id,$travel_way_id,$country_number);
+       $result=$user->checkEmail($email);
+       return $result;
+     
+    }
+    
+    public function create($name,$email,$phone,$country_id,$age_group_id,$travel_way_id,$country_number)
+    {
+       $user=new User($this->db);
+       $result=$user->create($name,$email,$phone,$country_id,$age_group_id,$travel_way_id,$country_number);
        return $result;
      
     }
@@ -33,7 +42,7 @@ class HomeController
                         <option value="229" >+229</option>';
 
 
-        $countries = $object->Read();
+        $countries = $object->read();
 
         if (count($countries) > 0) {
             $number = 1;
@@ -57,10 +66,10 @@ class HomeController
 
         // Design initial table header
         $data = ' <select  name="traveler_type_id" id="traveler_type_id" class="form-control input-sm floatlabel" >
-                        <option value="229" >What Type Of Traveler?</option>';
+                        <option value="0" >What Type Of Traveler?</option>';
 
 
-        $types = $object->Read();
+        $types = $object->read();
 
         if (count($types) > 0) {
             $number = 1;
@@ -83,11 +92,11 @@ class HomeController
         $object = new TravelWay($this->db);
 
         // Design initial table header
-        $data = ' <select  name="traveler_type_id" id="traveler_type_id" class="form-control input-sm floatlabel" >
-                        <option value="229" >HOW often Do You Travel?</option>';
+        $data = ' <select  name="traveler_way_id" id="traveler_way_id" class="form-control input-sm floatlabel" >
+                        <option value="0" >HOW often Do You Travel?</option>';
 
 
-        $types = $object->Read();
+        $types = $object->read();
 
         if (count($types) > 0) {
             $number = 1;
@@ -111,11 +120,11 @@ class HomeController
         $object = new AgeGroup($this->db);
 
         // Design initial table header
-        $data = ' <select  name="traveler_type_id" id="traveler_type_id" class="form-control input-sm floatlabel" >
-                        <option value="229" >What Age Group Do You Fall Under?</option>';
+        $data = ' <select  name="age_group_id" id="age_group_id" class="form-control input-sm floatlabel" >
+                        <option value="0" >What Age Group Do You Fall Under?</option>';
 
 
-        $types = $object->Read();
+        $types = $object->read();
 
         if (count($types) > 0) {
             $number = 1;

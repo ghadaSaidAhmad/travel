@@ -1,5 +1,5 @@
 
-
+/******************************* get form data ******************************************/
 // get Countries
 function getCountries() {
     $.get("app/getCountries.php", {}, function (data, status) {
@@ -32,7 +32,34 @@ getCountries();
 getTravelerType();
 getTravelWay();
 getAgeGroup();
+/*******************************end  get form data **************************************/
 
+/*******************************check email ********************************************/
+
+    $(document).on('input','#email',function(){
+       
+    var url = "app/checkEmail.php"; // the script where you handle the form input.
+    var email=$(this).val();
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: {email:email}, // serializes the form's elements.
+           success: function(data)
+           {
+              alertify.success("successfully registertion ");
+           }
+         });
+         
+
+    });
+
+
+
+/*******************************check email ********************************************/
+
+/*******************************end  get form data **************************************/
+
+/******************************* form proccess ******************************************/
 
 
 //validation
@@ -42,6 +69,11 @@ function validation()
     var name=$('#name').val().trim();
     var phone=$('#phone').val().trim();
     var email=$('#email').val().trim();
+    var traveler_type=$('#traveler_type_id').val();
+    var traveler_way=$('#traveler_way_id').val();
+    var country_number=$('#country_number').val();
+    var age_group=$('#age_group_id').val();
+
     var validation="";
     var flag=false;
     if(name=='')
@@ -57,13 +89,47 @@ function validation()
       flag=true;
 
     }
-    if(email=='')
+
+   if(email=='')
     {
       
       validation +="please Enter Your Email</br>";
       flag=true;
 
     }
+
+    if(traveler_type==0)
+    {
+      
+      validation +="please select  What Type Of Traveler? </br>";
+      flag=true;
+
+    }
+    if(traveler_way==0)
+    {
+      
+      validation +="please select HOW often Do You Travel?</br>";
+      flag=true;
+
+    }
+
+  if(age_group==0)
+    {
+      
+      validation +="please select What Age Group Do You Fall Under?</br>";
+      flag=true;
+
+    }
+
+      if(country_number==0)
+    {
+      
+      validation +="please select How meny Countries have you visited?</br>";
+      flag=true;
+
+    }
+
+
     if(flag)
     {
       alertify.error(validation);
@@ -91,4 +157,5 @@ function join() {
  }
 
 }
+/*******************************end form proccess ******************************************/
 

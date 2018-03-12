@@ -22,7 +22,7 @@ if (isset($_POST['name'])  && isset($_POST['email'])
 
     //$object->Create($name,$email,$phone,$country_id,$age_group_id,$travel_way_id,$country_number);
     $object = new HomeController();
-    $result=$object->Create($name,$email,$phone,$country_id,$age_group_id,$travel_way_id,$country_number);
+    $result=$object->create($name,$email,$phone,$country_id,$age_group_id,$travel_way_id,$country_number);
     echo $result;
 }
 

@@ -7,6 +7,7 @@ define('PASSWORD', ''); // Database user password  (if password is not set for u
 define('DATABASE', 'travel'); // Database name
 define('CHARSET', 'utf8');
 
+
     function DB()
     {
         static $instance;

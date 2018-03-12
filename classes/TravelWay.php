@@ -16,7 +16,7 @@ class TravelWay
      *
      * @return $mixed
      * */
-    public function Read()
+    public function read()
     {
         $query = $this->db->prepare("SELECT * FROM travel_way");
         $query->execute();

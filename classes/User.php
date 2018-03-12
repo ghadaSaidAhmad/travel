@@ -17,7 +17,7 @@ class User
      * @param $email
      * @return $mixed
      * */
-    public function Create($name,$email,$phone,$country_id,$age_group_id,$travel_way_id,$country_number)
+    public function create($name,$email,$phone,$country_id,$age_group_id,$travel_way_id,$country_number)
     {
         $query = $this->db->prepare("INSERT INTO user(name, email,phone,country_id,age_group_id,travel_way_id,country_number) VALUES 
                                                      (:name,:email,:phone,:country_id,:age_group_id,:travel_way_id,:country_number)");
@@ -33,6 +33,10 @@ class User
       
        
         return $result;
+    }
+    public function checkEmail($email)
+    {
+        
     }
 
 

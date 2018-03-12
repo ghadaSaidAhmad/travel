@@ -17,7 +17,7 @@ class Country
      *
      * @return $mixed
      * */
-    public function Read()
+    public function read()
     {
         $query = $this->db->prepare("SELECT * FROM country");
         $query->execute();

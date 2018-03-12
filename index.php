@@ -58,13 +58,14 @@
 
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
-                                    <select  name="country_number" id="country_number" class="form-control input-sm floatlabel">
+                                    <select name="country_number" id="country_number" class="form-control input-sm floatlabel">
                                     
+                                    <option value="0">select How meny Countries have you visited?</option>
                                    <?php 
                                             $data='';
                                             for ($i=0; $i <=100 ; $i++) 
                                                 { 
-                                                $data .='<option value="">'.$i.'</option>';
+                                                $data .='<option value="'.$i.'">'.$i.'</option>';
                                                 }
                                                 
                                                 echo $data;

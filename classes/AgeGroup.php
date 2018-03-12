@@ -16,7 +16,7 @@ class AgeGroup
      *
      * @return $mixed
      * */
-    public function Read()
+    public function read()
     {
         $query = $this->db->prepare("SELECT * FROM `age_group");
         $query->execute();
